@@ -12,11 +12,48 @@
     */
 
     //ENTRADA
-
-
+    let habitantes = Number(prompt(`Informe a quantidade de pessoas que fará essa pesquisa`));
     //PROCESSAMENTO
-
-
+    let dinheiro = 0;
+    let salarios = [];
+    let salarioSort = salarios;
+    let sexos = [];
+    let idades = [];
+    let mulhe = 0;
+    while (habitantes > 0) {
+        let years = Number(prompt(`Informe sua idade`));
+        idades.push(years);
+        let gereno = prompt(`Informe o seu gênero`);
+        sexos.push(gereno);
+        if (gereno == "f") {
+            mulhe += 1;
+        }
+        let money = Number(prompt(`Informe o seu salário`));
+        dinheiro += money;
+        salarios.push(money);
+        habitantes -= 1;
+    }
+    salarioSort.sort(function (a, b) {
+        return a-b;
+    })
+    idades.sort(function (a, b) {
+        return a-b;
+    })
+    let colchete = salarioSort[0]
+    let menorSalario = salarios[salarios.indexOf(colchete)]
+    let menorSexo = sexos[salarios.indexOf(colchete)];
+    let menorIdade = idades[salarios.indexOf(colchete)];
+    let quantidadeSalarios = salarios.length
+    let media = dinheiro / quantidadeSalarios;
+    if (menorSexo == "f") {
+        menorSexo = "mulher";
+    }
+    else if (menorSexo == "m") {
+        menorSexo = "homem";
+    }
     //SAÍDA
-
+    alert(`A média dos salários do grupo foi R$${media}`);
+    alert(`A menor idade do grupo informada foi ${idades[0]} anos, e a maior idade informada foi ${idades[idades.length-1]} anos`);
+    alert(`Tem ${mulhe} mulheres no grupo`);
+    alert(`A pessoa que teve o salário de R$${menorSalario}, era ${menorSexo} e ${menorIdade} anos`);
 </script>
