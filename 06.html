@@ -1,0 +1,61 @@
+<script>
+    /*
+    PROBLEMA: URNA ELETRÔNICA
+    Faça um programa que simule a urna eletrônica.
+    A tela a ser apresentada deverá ser da seguinte forma:
+    As opções são:
+    1. Candidato Joãozinho
+    2. Candidato Mariazinha
+    3. Nulo
+    4. Branco
+    Entre com o seu voto:
+
+    O programa deverá ler os votos dos eleitores e, quando for entrado o número 0, apresentar as seguintes
+    informações:
+    a) O número de votos de cada candidato;
+    b) A porcentagem de votos nulos;
+    c) A porcentagem de votos brancos;
+    d) O candidato vencedor.
+    */
+
+    //ENTRADA
+    let quantidadeEleitores = Number(prompt(`Informe a quantidade de eleitores que irão votar`));
+    let quantidadeSemTirar = quantidadeEleitores;
+    //PROCESSAMENTO
+    let votaro1 = 0;
+    let votaro2 = 0;
+    let votaroNulo = 0;
+    let votaroBranco = 0;
+    while (quantidadeEleitores > 0) {
+        quantidadeEleitores -= 1;
+        let voto = prompt(`
+        1. Candidato Joãozinho <br>
+        2. Candidato Mariazinha <br>
+        3. Nulo <br>
+        4. Branco <br>
+        Entre com o seu voto:`);
+        if (voto === "1") {
+            votaro1 += 1;
+        }
+        else if (voto === "2") {
+            votaro2 += 1;
+        }
+        else if (voto === "3") {
+            votaroNulo += 1;
+        }
+        else if (voto === "4") {
+            votaroBranco += 1;
+        }       
+    }
+    let porcentagemNulo = (votaroNulo / quantidadeSemTirar) * 100;
+    let porcentagemBranco = (votaroBranco / quantidadeSemTirar) * 100;
+    let ganhador = "";
+    if (votaro1 > votaro2) {
+        ganhador = "Candidato Joãozinho";
+    }
+    else if (votaro2 > votaro1) {
+        ganhador = "Candidata Mariazinha";
+    }
+    //SAÍDA
+    document.write(`O candidato Joãozinho recebeu ${votaro1} votos <br> A candidata Mariazinha recebeu ${votaro2} votos <br> ${porcentagemNulo}% dos eleitores votaram nulo <br> ${porcentagemBranco}% dos eleitores votaram branco <br> Quem ganhou as eleições foi o/a ${ganhador}`);
+</script>
